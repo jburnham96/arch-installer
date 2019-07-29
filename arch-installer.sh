@@ -132,8 +132,8 @@ echo "Installing git"
 pacman -S --noconfirm git
 
 #set passwords
-echo -e "$password\n$password" | passwd $user
-echo -e "$password\n$password" | passwd root
+echo "$user:$password" | chpasswd --root /mnt
+echo "root:$password" | chpasswd --root /mnt
 
 #Full upgrade in case
 pacman -Syu --noconfirm
