@@ -131,7 +131,9 @@ pacman -S --noconfirm code
 echo "Installing git"
 pacman -S --noconfirm git
 
-exit
+#set passwords
+echo "$user:$password" | chpasswd
+echo "root:$password" | chpasswd
 
-#echo "$user:$password" | chpasswd --root /mnt
-#echo "root:$password" | chpasswd --root /mnt
+exit
+echo "Finished!"
