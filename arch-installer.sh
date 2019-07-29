@@ -135,5 +135,8 @@ pacman -S --noconfirm git
 echo "$user:$password" | chpasswd
 echo "root:$password" | chpasswd
 
+#Full upgrade in case
+pacman -Syu --noconfirm
+
 exit
 echo "Finished!"
