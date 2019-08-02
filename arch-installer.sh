@@ -131,6 +131,10 @@ pacman -S --noconfirm code
 echo "Installing git"
 pacman -S --noconfirm git
 
+#install netctl
+echo "Installing netctl"
+pacman -S --noconfirm netctl
+
 #Full upgrade in case
 pacman -Syu --noconfirm
 
