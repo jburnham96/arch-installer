@@ -135,6 +135,14 @@ pacman -S --noconfirm git
 echo "Installing netctl"
 pacman -S --noconfirm netctl
 
+#install yay
+pacman -S --noconfirm base-devel
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si --noconfirm
+cd ..
+rm -r yay
+
 #Full upgrade in case
 pacman -Syu --noconfirm
 
