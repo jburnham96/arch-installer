@@ -129,9 +129,6 @@ pacman -S --noconfirm base-devel
 #install yay
 echo "=========== installing yay ==========="
 
-sleep 5
-
-
 useradd builduser -m # Create the builduser
 passwd -d builduser # Delete the buildusers password
 printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers # Allow the builduser passwordless sudo
@@ -140,7 +137,7 @@ sudo -u builduser bash -c 'cd ~ && git clone https://aur.archlinux.org/yay.git &
 #rm -r -f yay
 
 #Installing additional software through yay
-declare -a yayArr=("spotify" "slack" "discord" "deepin-screenshot", "docker", "dotnet-sdk")
+declare -a yayArr=("spotify" "slack" "discord" "deepin-screenshot", "docker", "dotnet-sdk", "nodejs")
 
 for i in "${yayArr[@]}"
 do
@@ -152,6 +149,8 @@ echo "=========== yay installed ==========="
 
 #Full upgrade in case
 pacman -Syu --noconfirm
+
+sleep 5
 
 userdel builduser
 
