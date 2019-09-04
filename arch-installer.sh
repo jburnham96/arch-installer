@@ -124,6 +124,9 @@ do
    pacman -S --noconfirm $i
 done
 
+echo "=========== installing yay ==========="
+
+sleep 5
 #install yay
 pacman -S --noconfirm base-devel
 git clone https://aur.archlinux.org/yay.git
@@ -140,6 +143,8 @@ do
    echo "Installing $i"
    yay $i -S --noconfirm
 done
+
+echo "=========== yay installed ==========="
 
 #Full upgrade in case
 pacman -Syu --noconfirm
