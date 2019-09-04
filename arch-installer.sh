@@ -115,25 +115,14 @@ pacman -S --noconfirm sddm
 
 systemctl enable sddm
 
-#install terminator
-echo "Installing terminator"
-pacman -S --noconfirm terminator
+#Installing additional software through pacman
+declare -a pacmanArr=("terminator" "dolphin" "code" "git" "netctl")
 
-#install dolphin
-echo "Installing dolphin"
-pacman -S --noconfirm dolphin
-
-#install vs code
-echo "Installing vs-code"
-pacman -S --noconfirm code
-
-#install git
-echo "Installing git"
-pacman -S --noconfirm git
-
-#install netctl
-echo "Installing netctl"
-pacman -S --noconfirm netctl
+for i in "${pacmanArr[@]}"
+do
+   echo "Installing $i"
+   pacman -S --noconfirm $i
+done
 
 #install yay
 pacman -S --noconfirm base-devel
@@ -142,6 +131,15 @@ cd yay
 makepkg -si --noconfirm
 cd ..
 rm -r yay
+
+#Installing additional software through yay
+declare -a yayArr=("spotify" "slack" "discord" "deepin-screenshot", "docker", "dotnet-sdk")
+
+for i in "${yayArr[@]}"
+do
+   echo "Installing $i"
+   yay $i -S --noconfirm
+done
 
 #Full upgrade in case
 pacman -Syu --noconfirm
