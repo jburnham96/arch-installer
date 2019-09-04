@@ -130,13 +130,14 @@ pacman -S --noconfirm base-devel
 echo "=========== installing yay ==========="
 
 sleep 5
-git clone https://aur.archlinux.org/yay.git
-chown $user yay
-cd yay
-su $user
-makepkg -si --noconfirm
-cd ..
-rm -r -f yay
+
+
+useradd builduser -m # Create the builduser
+passwd -d builduser # Delete the buildusers password
+printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers # Allow the builduser passwordless sudo
+sudo -u builduser bash -c 'cd ~ && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm' # Clone and build a package
+
+#rm -r -f yay
 
 #Installing additional software through yay
 declare -a yayArr=("spotify" "slack" "discord" "deepin-screenshot", "docker", "dotnet-sdk")
@@ -144,13 +145,15 @@ declare -a yayArr=("spotify" "slack" "discord" "deepin-screenshot", "docker", "d
 for i in "${yayArr[@]}"
 do
    echo "Installing $i"
-   yay $i -S --noconfirm
+   sudo -u builduser bash -c "yay $i -S --noconfirm"
 done
 
 echo "=========== yay installed ==========="
-exit
+
 #Full upgrade in case
 pacman -Syu --noconfirm
+
+userdel builduser
 
 exit
 
