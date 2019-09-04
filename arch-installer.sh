@@ -130,7 +130,7 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm
 cd ..
-rm -r yay
+rm -r -f yay
 
 #Installing additional software through yay
 declare -a yayArr=("spotify" "slack" "discord" "deepin-screenshot", "docker", "dotnet-sdk")
