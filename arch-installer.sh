@@ -150,8 +150,8 @@ echo "=========== yay installed ==========="
 #Full upgrade in case
 pacman -Syu --noconfirm
 
-killall --user builduser
-userdel builduser
+#killall --user builduser
+userdel -f builduser
 
 exit
 
