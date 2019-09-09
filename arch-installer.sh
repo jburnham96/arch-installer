@@ -137,7 +137,7 @@ sudo -u builduser bash -c 'cd ~ && git clone https://aur.archlinux.org/yay.git &
 #rm -r -f yay
 
 #Installing additional software through yay
-declare -a yayArr=("spotify" "slack" "discord" "deepin-screenshot", "docker", "dotnet-sdk", "nodejs")
+declare -a yayArr=("spotify" "slack" "discord" "deepin-screenshot" "docker" "dotnet-sdk")
 
 for i in "${yayArr[@]}"
 do
