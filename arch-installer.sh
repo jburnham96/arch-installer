@@ -116,7 +116,7 @@ pacman -S --noconfirm sddm
 systemctl enable sddm
 
 #Installing additional software through pacman
-declare -a pacmanArr=("terminator" "dolphin" "code" "git" "netctl")
+declare -a pacmanArr=("terminator" "dolphin" "code" "git")
 
 for i in "${pacmanArr[@]}"
 do
@@ -145,10 +145,7 @@ do
    sudo -u builduser bash -c "yay $i -S --noconfirm"
 done
 
-echo "=========== yay installed ==========="
-
-#Full upgrade in case
-pacman -Syu --noconfirm
+echo "=========== yay software installed ==========="
 
 #killall --user builduser
 userdel -f builduser
