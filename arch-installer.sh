@@ -71,21 +71,21 @@ mkdir /mnt/boot
 mount "${part_boot}" /mnt/boot
 
 ### Install and configure the basic system ###
-cat >>/etc/pacman.conf <<EOF
-[mdaffin]
-SigLevel = Optional TrustAll
-Server = $REPO_URL
-EOF
+#cat >>/etc/pacman.conf <<EOF
+#[mdaffin]
+#SigLevel = Optional TrustAll
+#Server = $REPO_URL
+#EOF
 
-pacstrap /mnt mdaffin-desktop
+#pacstrap /mnt mdaffin-desktop
 genfstab -t PARTUUID /mnt >> /mnt/etc/fstab
 echo "${hostname}" > /mnt/etc/hostname
 
-cat >>/mnt/etc/pacman.conf <<EOF
-[mdaffin]
-SigLevel = Optional TrustAll
-Server = $REPO_URL
-EOF
+#cat >>/mnt/etc/pacman.conf <<EOF
+#[mdaffin]
+#SigLevel = Optional TrustAll
+#Server = $REPO_URL
+#EOF
 
 arch-chroot /mnt bootctl install
 
