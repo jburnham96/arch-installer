@@ -83,6 +83,7 @@ mount "${part_boot}" /mnt/boot
 
 pacstrap /mnt base
 genfstab -U /mnt >> /mnt/etc/fstab
+echo "${hostname}" > /mnt/etc/hostname
 
 #cat >>/mnt/etc/pacman.conf <<EOF
 #[mdaffin]
