@@ -78,8 +78,11 @@ mount "${part_boot}" /mnt/boot
 #EOF
 
 #pacstrap /mnt mdaffin-desktop
-genfstab -t PARTUUID /mnt >> /mnt/etc/fstab
-echo "${hostname}" > /mnt/etc/hostname
+#genfstab -t PARTUUID /mnt >> /mnt/etc/fstab
+#echo "${hostname}" > /mnt/etc/hostname
+
+pacstrap /mnt base
+genfstab -U /mnt >> /mnt/etc/fstab
 
 #cat >>/mnt/etc/pacman.conf <<EOF
 #[mdaffin]
